@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>青柠启动页 - 测试版</title>
+    <!-- 引入图标库（不用下载，在线加载） -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            /* 青柠主题渐变背景，可自行修改颜色 */
+            background: linear-gradient(135deg, #7bed9f 0%, #70a1ff 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            padding: 20px;
+        }
+
+        /* 时间显示区域 */
+        .time-container {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .time {
+            font-size: 80px;
+            font-weight: 300;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .date {
+            font-size: 18px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* 搜索框区域 */
+        .search-container {
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 60px;
+        }
+
+        .search-box {
+            display: flex;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px); /* 毛玻璃效果 */
+            border-radius: 50px;
+            padding: 15px 25px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        .search-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: white;
+            font-size: 18px;
+            padding: 0 15px;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .search-engine {
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .search-engine:hover {
+            opacity: 1;
+        }
+
+        .search-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 20px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .search-btn:hover {
+            opacity: 1;
+        }
+
+        /* 导航图标区域 */
+        .nav-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 30px;
+            max-width: 800px;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .nav-item:hover {
+            transform: translateY(-5px);
+            opacity: 0.9;
+        }
+
+        .nav-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .nav-name {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* 响应式适配手机 */
+        @media (max-width: 768px) {
+            .time {
+                font-size: 50px;
+            }
+
+            .nav-container {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+            }
+
+            .nav-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="time-container">
+        <div class="time" id="time">00:00:00</div>
+        <div class="date" id="date">2026年06月10日 星期三</div>
+    </div>
+
+    <div class="search-container">
+        <div class="search-box">
+            <button class="search-engine" id="engine-btn" title="切换搜索引擎">百度</button>
+            <input type="text" class="search-input" id="search-input" placeholder="搜索一下，马上出发..." autocomplete="off">
+            <button class="search-btn" id="search-btn">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="nav-container">
+        <!-- 导航链接，可自行添加删除 -->
+        <a href="https://github.com" class="nav-item" target="_blank">
+            <div class="nav-icon"><i class="fa fa-github"></i></div>
+            <span class="nav-name">GitHub</span>
+        </a>
+        <a href="https://www.baidu.com" class="nav-item" target="_blank">
+            <div class="nav-icon"><i class="fa fa-paw"></i></div>
+            <span class="nav-name">百度</span>
+        </a>
+        <a href="https://www.google.com" class="nav-item" target="_blank">
+            <div class="nav-icon"><i class="fa fa-google"></i></div>
+            <span class="nav-name">谷歌</span>
+        </a>
+        <a href="https://www.bilibili.com" class="nav-item" target="_blank">
+            <div class="nav-icon"><i class="fa fa-play-circle"></i></div>
+            <span class="nav-name">B站</span>
+        </a>
+        <a href="https://www.zhihu.com" class="nav-item" target="_blank">
+            <div class="nav-icon"><i class="fa fa-question-circle"></i></div>
+            <span class="nav-name">知乎</span>
+        </a>
+        <a href="https://juejin.cn" class="nav-item" target="_blank">
+            <div class="nav-icon"><i class="fa fa-code"></i></div>
+            <span class="nav-name">掘金</span>
+        </a>
+    </div>
+
+    <script>
+        // 1. 动态更新时间
+        function updateTime() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('time').textContent = `${hours}:${minutes}:${seconds}`;
+
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const weekDays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+            const weekDay = weekDays[now.getDay()];
+            document.getElementById('date').textContent = `${year}年${month}月${day}日 ${weekDay}`;
+        }
+
+        // 初始化时间并每秒更新
+        updateTime();
+        setInterval(updateTime, 1000);
+
+        // 2. 搜索功能（支持多引擎切换）
+        const engines = [
+            { name: '百度', url: 'https://www.baidu.com/s?wd=' },
+            { name: '谷歌', url: 'https://www.google.com/search?q=' },
+            { name: '必应', url: 'https://cn.bing.com/search?q=' }
+        ];
+        let currentEngineIndex = 0;
+
+        const engineBtn = document.getElementById('engine-btn');
+        const searchInput = document.getElementById('search-input');
+        const searchBtn = document.getElementById('search-btn');
+
+        // 切换搜索引擎
+        engineBtn.addEventListener('click', () => {
+            currentEngineIndex = (currentEngineIndex + 1) % engines.length;
+            engineBtn.textContent = engines[currentEngineIndex].name;
+        });
+
+        // 执行搜索
+        function doSearch() {
+            const keyword = searchInput.value.trim();
+            if (keyword) {
+                window.open(engines[currentEngineIndex].url + encodeURIComponent(keyword));
+            }
+        }
+
+        searchBtn.addEventListener('click', doSearch);
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') doSearch();
+        });
+
+        // 页面加载后自动聚焦搜索框
+        window.addEventListener('load', () => {
+            searchInput.focus();
+        });
+    </script>
+</body>
+</html>
