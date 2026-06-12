@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jubuyi21</title>
+    <title>青柠启动页 - 测试版</title>
     <!-- 引入图标库（不用下载，在线加载） -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <style>
@@ -173,7 +173,7 @@
 
     <div class="search-container">
         <div class="search-box">
-            <button class="search-engine" id="engine-btn" title="切换搜索引擎">百度</button>
+            <button class="search-engine" id="engine-btn" title="切换搜索引擎">必应</button> <!-- 同步修改按钮初始显示文本 -->
             <input type="text" class="search-input" id="search-input" placeholder="搜索一下，马上出发..." autocomplete="off">
             <button class="search-btn" id="search-btn">
                 <i class="fa fa-search"></i>
@@ -236,7 +236,7 @@
             { name: '谷歌', url: 'https://www.google.com/search?q=' },
             { name: '必应', url: 'https://cn.bing.com/search?q=' }
         ];
-        let currentEngineIndex = 0;
+        let currentEngineIndex = 2; // 关键修改：从 0（百度）改为 2（必应）
 
         const engineBtn = document.getElementById('engine-btn');
         const searchInput = document.getElementById('search-input');
